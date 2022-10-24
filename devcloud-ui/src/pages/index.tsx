@@ -20,8 +20,8 @@ export const Home: NextPage = () => {
               <p className="text-sm font-bold text-slate-500">Or sign in with credentials</p>
             </div>
             <form>
-              <FormInput label="Email" type="email" placeholder="Email" />
-              <FormInput label="Password" type="password" placeholder="Password" />
+              <FormInput label="Email" type="email" placeholder="Email" autocomplete="username" />
+              <FormInput label="Password" type="password" placeholder="Password" autocomplete="current-password" />
               <div className="pt-3 text-center">
                 {/* TODO: maybe refactor button into separate componentr */}
                 <button
