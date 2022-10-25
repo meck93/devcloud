@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import FormInput from "../features/startpage/FormInput";
+import FormInput from "../features/startpage/FormInput/FormInput";
 import GoogleSignInButton from "../features/startpage/GoogleSignInButton";
 
 export const Home: NextPage = () => {
