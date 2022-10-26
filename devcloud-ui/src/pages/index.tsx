@@ -2,7 +2,6 @@ import { useUser } from "@auth0/nextjs-auth0";
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Layout from "../features/layout/Layout";
 
 export const Home: NextPage = () => {
   const router = useRouter();
