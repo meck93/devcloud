@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import GoogleSvg from "../../../public/google-48.svg";
 
 export default function GoogleSignInButton(): JSX.Element {

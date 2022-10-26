@@ -26,9 +26,9 @@ export const Home: NextPage = () => {
               <div className="pt-3 text-center">
                 {/* TODO: maybe refactor button into separate componentr */}
                 <Link href="/api/auth/login">
-                  <a className="w-full px-6 py-3 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-800 active:bg-slate-600 hover:shadow-lg focus:outline-none">
+                  <div className="w-full px-6 py-3 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-800 active:bg-slate-600 hover:shadow-lg focus:outline-none">
                     Sign In
-                  </a>
+                  </div>
                 </Link>
               </div>
             </form>
