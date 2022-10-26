@@ -11,7 +11,7 @@ export const Dashboard: NextPage<Claims> = ({ user }) => {
       style={{ gridTemplateRows: "max-content auto min-content" }}
     >
       <nav className="flex justify-center row-start-1 row-end-2 bg-white border-b border-gray-200 rounded col-span-full">
-        <div className="w-full px-3 py-3 lg:px-5 lg:pl-3">
+        <div className="w-full p-3">
           <div className="flex flex-row justify-between">
             <div className="flex items-center text-xl font-bold">
               {/* maybe add a logo */}
