@@ -1,6 +1,8 @@
-import Link from "next/link";
+/* eslint-disable @next/next/no-html-link-for-pages */
+// currently, the nextjs Link component doesn't work
+// it leads to a client-side crash when Link is used in a server component
 
-export default function Home() {
+export default function Page() {
   return (
     <main className="w-full px-4 py-6 mx-auto">
       <h1 className="mb-3 text-2xl font-bold text-center lg:text-3xl">Welcome to the Devcloud</h1>
@@ -9,12 +11,13 @@ export default function Home() {
         <p className="p-3">It is fully static and does not required JavaScript to work.</p>
       </div>
       <div className="flex justify-center">
-        <Link href="/">
+        <a href="/">
           <div className="px-6 py-3 text-sm font-bold text-white transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-800 hover:shadow-lg focus:outline-none">
             Go to Startpage
           </div>
-        </Link>
+        </a>
       </div>
     </main>
   );
 }
+/* eslint-enable @next/next/no-html-link-for-pages */

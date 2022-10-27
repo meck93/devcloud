@@ -1,16 +1,7 @@
-import { useUser } from "@auth0/nextjs-auth0";
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export const Home: NextPage = () => {
-  const router = useRouter();
-  const { user } = useUser();
-
-  if (user) {
-    router.push("/dashboard");
-  }
-
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <section className="flex flex-col items-center justify-center flex-grow">
@@ -30,7 +21,7 @@ export const Home: NextPage = () => {
       </section>
 
       <nav className="p-6">
-        <Link href="/next13">
+        <Link href="/new-static-page">
           <span className="px-2 py-2 text-sm font-bold text-black transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-200 hover:shadow-md focus:outline-none">
             go to fully static page
           </span>
