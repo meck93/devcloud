@@ -1,3 +1,4 @@
+// TODO: consider refactoring the icon to public/icons and import via Next.js Image component
 export default function UserIcon() {
   return (
     <svg
