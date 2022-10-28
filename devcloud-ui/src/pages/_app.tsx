@@ -1,11 +1,19 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { UserProvider } from "@auth0/nextjs-auth0";
 
-export default function App({ Component, pageProps }: AppProps) {
+import { SessionProvider } from "next-auth/react";
+import EnsureAuthenticated from "../features/auth/EnsureAuthenticated/EnsureAuthenticated";
+import type { AppAuthProps } from "../utils/next-auth/next-auth.types";
+
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppAuthProps) {
   return (
-    <UserProvider>
-      <Component {...pageProps} />
-    </UserProvider>
+    <SessionProvider session={session}>
+      {Component.authenticationRequired ? (
+        <EnsureAuthenticated>
+          <Component {...pageProps} />
+        </EnsureAuthenticated>
+      ) : (
+        <Component {...pageProps} />
+      )}
+    </SessionProvider>
   );
 }

@@ -1,12 +1,12 @@
-import { Claims, withPageAuthRequired } from "@auth0/nextjs-auth0";
-import type { NextPage } from "next";
-import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 import CloudIcon from "../../features/dashboard/sidebar/icons/CloudIcon/CloudIcon";
 import DashboardIcon from "../../features/dashboard/sidebar/icons/DashboardIcon/DashboardIcon";
 import UserIcon from "../../features/dashboard/sidebar/icons/UserIcon/UserIcon";
 import LinkItem from "../../features/dashboard/sidebar/LinkItem/LinkItem";
+import { ComponentWithAuth } from "../../utils/next-auth/next-auth.types";
 
-export const Dashboard: NextPage<Claims> = ({ user }) => {
+const Dashboard: ComponentWithAuth = () => {
+  const { data: session } = useSession();
   return (
     <div
       className="grid min-h-screen grid-cols-6 bg-slate-50"
@@ -16,12 +16,12 @@ export const Dashboard: NextPage<Claims> = ({ user }) => {
         <div className="w-full p-3">
           <div className="flex flex-row justify-between">
             <div className="flex items-center text-xl font-bold">
-              <Link href="/api/auth/logout">
+              <button onClick={() => signOut({ callbackUrl: "/" })}>
                 <span className="self-center whitespace-nowrap">Devcloud</span>
-              </Link>
+              </button>
             </div>
             <div className="flex items-center">
-              <span className="text-sm">Welcome, {user.name}</span>
+              <span className="text-sm">Welcome, {session?.user?.name}</span>
             </div>
           </div>
         </div>
@@ -45,4 +45,6 @@ export const Dashboard: NextPage<Claims> = ({ user }) => {
   );
 };
 
-export default withPageAuthRequired(Dashboard);
+Dashboard.authenticationRequired = true;
+
+export default Dashboard;
