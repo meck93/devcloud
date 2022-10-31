@@ -36,7 +36,8 @@ jobs:
           node-version: 16.x
 
       - name: install
-        run: npm install
+        # remove --legacy-peer-deps as soon as next-auth supports Next.js 13 as peer dependency
+        run: npm install --legacy-peer-deps
 
       - name: build
         run: npm run build
