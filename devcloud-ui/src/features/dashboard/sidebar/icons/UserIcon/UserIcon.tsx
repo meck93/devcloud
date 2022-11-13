@@ -1,0 +1,13 @@
+// TODO: consider refactoring the icon to public/icons and import via Next.js Image component
+export default function UserIcon() {
+  return (
+    <svg
+      className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+    </svg>
+  );
+}

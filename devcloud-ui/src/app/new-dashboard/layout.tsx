@@ -1,12 +1,10 @@
-import { signOut, useSession } from "next-auth/react";
+import React from "react";
 import CloudIcon from "../../features/dashboard/sidebar/icons/CloudIcon/CloudIcon";
 import DashboardIcon from "../../features/dashboard/sidebar/icons/DashboardIcon/DashboardIcon";
 import UserIcon from "../../features/dashboard/sidebar/icons/UserIcon/UserIcon";
 import LinkItem from "../../features/dashboard/sidebar/LinkItem/LinkItem";
-import { ComponentWithAuth } from "../../utils/next-auth/next-auth.types";
 
-const Dashboard: ComponentWithAuth = () => {
-  const { data: session } = useSession();
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="grid min-h-screen grid-cols-6 bg-slate-50"
@@ -16,12 +14,11 @@ const Dashboard: ComponentWithAuth = () => {
         <div className="w-full p-3">
           <div className="flex flex-row justify-between">
             <div className="flex items-center text-xl font-bold">
-              <button onClick={() => signOut({ callbackUrl: "/" })}>
-                <span className="self-center whitespace-nowrap">Devcloud</span>
-              </button>
+              {/* maybe add a logo */}
+              <span className="self-center whitespace-nowrap">Devcloud</span>
             </div>
             <div className="flex items-center">
-              <span className="text-sm">Welcome, {session?.user?.name}</span>
+              <span className="text-sm">Welcome, Tester!</span>
             </div>
           </div>
         </div>
@@ -29,22 +26,18 @@ const Dashboard: ComponentWithAuth = () => {
       <aside className="flex-col hidden col-span-2 col-start-1 row-start-2 md:flex lg:col-span-1">
         <div className="flex-1 px-3 space-y-1 bg-white">
           <ul className="py-2 space-y-2">
-            <LinkItem label="Overview" icon={<DashboardIcon />} href="#" />
-            <LinkItem label="Cloud" icon={<CloudIcon />} href="#" />
-            <LinkItem label="Users" icon={<UserIcon />} href="#" />
+            <LinkItem label="Overview" icon={<DashboardIcon />} href="/new-dashboard/overview" />
+            <LinkItem label="Cloud" icon={<CloudIcon />} href="/new-dashboard/cloud" />
+            <LinkItem label="Users" icon={<UserIcon />} href="/new-dashboard/users" />
           </ul>
         </div>
       </aside>
       <main className="flex flex-col col-start-1 row-start-2 p-3 md:col-start-3 lg:col-start-2 col-span-full">
-        <div className="text-center">Main</div>
+        {children}
       </main>
       <footer className="flex justify-center h-24 row-span-1 bg-white border-t border-gray-200 col-span-full">
         <div className="pt-6 text-sm">There should be some important information here</div>
       </footer>
     </div>
   );
-};
-
-Dashboard.authenticationRequired = true;
-
-export default Dashboard;
+}

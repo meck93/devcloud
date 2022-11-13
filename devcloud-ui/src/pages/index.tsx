@@ -1,13 +1,13 @@
-import { useUser } from "@auth0/nextjs-auth0";
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export const Home: NextPage = () => {
+  const { status } = useSession();
   const router = useRouter();
-  const { user } = useUser();
 
-  if (user) {
+  if (status === "authenticated") {
     router.push("/dashboard");
   }
 
@@ -20,17 +20,18 @@ export const Home: NextPage = () => {
             <div className="w-full mb-3 rounded-lg shadow-lg bg-slate-200">
               <p className="p-3">Welcome, please login first!</p>
             </div>
-            <Link href="/api/auth/login">
-              <div className="px-6 py-3 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-800 active:bg-slate-600 hover:shadow-lg focus:outline-none">
-                Login
-              </div>
-            </Link>
+            <button
+              onClick={() => signIn("auth0", { callbackUrl: "/dashboard" })}
+              className="px-6 py-3 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-800 active:bg-slate-600 hover:shadow-lg focus:outline-none"
+            >
+              Login
+            </button>
           </div>
         </main>
       </section>
 
       <nav className="p-6">
-        <Link href="/next13">
+        <Link href="/new-static-page">
           <span className="px-2 py-2 text-sm font-bold text-black transition-all duration-150 ease-linear rounded shadow outline-none bg-slate-200 hover:shadow-md focus:outline-none">
             go to fully static page
           </span>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import GoogleSvg from "../../../public/google-48.svg";
 
-export default function GoogleSignInButton(): JSX.Element {
+export default function GoogleSignInButton() {
   return (
     <div className="flex justify-center">
       <button
